@@ -8,35 +8,35 @@ public class Main {
     boolean quit = false;
     int choice = 0;
     printInstruction();
-    while(!quit) {
-        System.out.println("Enter your choice: ");
-        choice = scanner.nextInt();
-        scanner.nextLine();
+        while(!quit) {
+            System.out.println("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-        switch(choice) {
-            case 0:
-                printInstruction();
-                break;
-            case 1:
-                groceryList.printGroceryList();
-                break;
-            case 2:
-                addItem();
-                break;
-            case 3:
-                modifyItem();
-                break;
-            case 4:
-                removeItem();
-                break;
-            case 5:
-                searchForItem();
-                break;
-            case 6:
-                quit = true;
-                break;
-        }
-    }
+            switch(choice) {
+                case 0:
+                    printInstruction();
+                    break;
+                case 1:
+                    groceryList.printGroceryList();
+                    break;
+                case 2:
+                    addItem();
+                    break;
+                case 3:
+                    modifyItem();
+                    break;
+                case 4:
+                    removeItem();
+                    break;
+                case 5:
+                    searchForItem();
+                    break;
+                case 6:
+                    quit = true;
+                    break;
+            }
+         }
     }
 
     public static void printInstruction() {
@@ -56,25 +56,24 @@ public class Main {
     }
 
     public static void modifyItem() {
-        System.out.println("Enter item number: ");
-        int itemNumber = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter replacement item: ");
+        System.out.println("Current item name: ");
+        String itemName = scanner.nextLine();
+        System.out.println("Enter new item: ");
         String newItem = scanner.nextLine();
-        groceryList.modifyGroceryItem(itemNumber-1, newItem);
+        groceryList.modifyGroceryItem(itemName, newItem);
     }
 
     public static void removeItem() {
         System.out.println("Enter item number: ");
         int itemNumber = scanner.nextInt();
         scanner.nextLine();
-        groceryList.removeGroceryItem(itemNumber-1);
+        groceryList.removeGroceryItem(itemNumber);
     }
 
     public static void searchForItem() {
         System.out.println("Enter item to search for: ");
         String searchItem = scanner.nextLine();
-        if(groceryList.findItem(searchItem) != null) {
+        if(groceryList.onFile(searchItem)) {
             System.out.println("Found " + searchItem + "in our grocery list");
         } else {
             System.out.println(searchItem + " is not in the shopping list");
