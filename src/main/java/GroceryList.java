@@ -3,6 +3,11 @@ import java.util.ArrayList;
 public class GroceryList {
     private ArrayList<String> groceryList = new ArrayList<String>();
 
+    public ArrayList<String> getGroceryList() {
+        return groceryList;
+    }
+
+
     public void addGroceryItem(String item) {
         groceryList.add(item);
     }
@@ -14,14 +19,14 @@ public class GroceryList {
         }
     }
 
-    private void modifyGroceryItem(String currentItem, String newItem) {
+    public void modifyGroceryItem(String currentItem, String newItem) {
         int position = findItem(currentItem);
         if (position >= 0) {
-            modifyGroceryItem(currentItem, newItem);
+            modifyGroceryItem(position, newItem);
         }
     }
 
-    public void modifyGroceryItem(int position, String newItem) {
+    private void modifyGroceryItem(int position, String newItem) {
         groceryList.set(position, newItem);
         System.out.println("Grocery item " + (position + 1) + " has been modified");
     }
