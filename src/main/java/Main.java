@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-//    private static Scanner scanner = new Scanner(System.in);
+    //    private static Scanner scanner = new Scanner(System.in);
 //    private static GroceryList groceryList = new GroceryList();
 //
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //    boolean quit = false;
 //    int choice = 0;
 //    printInstruction();
@@ -207,7 +207,35 @@ public class Main {
 //                "5 - query if an existing contact exists\n" +
 //                "6 - to print a list of available actions.");
 //        System.out.println("choose you action: ");
-//    }
+
+
+
+
+
+
+
+
+
+
+
+        Bank bank = new Bank("Halifax");
+        bank.addBranch("Brixton");
+        bank.addCustomer("Brixton", "Jade", 50.00);
+        bank.addCustomer("Brixton", "Tim", 200.34);
+        bank.addCustomer("Brixton", "Rob", 145.12);
+        bank.addCustomerTransaction(" Brixton", "Jade", 32.23);
+        bank.addCustomerTransaction("Brixton", "Tim", 204.94);
+        bank.addCustomerTransaction("Brixton", "Jade", 90.58);
+        bank.addCustomerTransaction("Brixton", "Tim", 1.21);
+        bank.addCustomerTransaction("Brixton", "Rob", 390.52);
+
+        bank.addBranch("Camden");
+        bank.addCustomer("Camden", "Jade", 400.23);
+        bank.addCustomer("Camden", "Tim", 13.44);
+        bank.addCustomer("Camden", "Rob", 109.65);
+
+        bank.listCustomers("Brixton", true);
+    }
 }
 
 
