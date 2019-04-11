@@ -1,3 +1,5 @@
+package PlayerMonster;
+
 import java.util.List;
 
 public interface ISaveable {

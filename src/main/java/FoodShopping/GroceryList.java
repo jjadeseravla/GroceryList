@@ -1,3 +1,5 @@
+package FoodShopping;
+
 import java.util.ArrayList;
 
 public class GroceryList {
