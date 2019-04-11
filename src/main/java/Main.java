@@ -6,6 +6,7 @@ public class Main {
 //    private static GroceryList groceryList = new GroceryList();
 //
     public static void main(String[] args) {
+        //----------------------------1------------------------------
 //    boolean quit = false;
 //    int choice = 0;
 //    printInstruction();
@@ -95,6 +96,7 @@ public class Main {
 //    }
 
 
+        //-------------------------2------------------------------
 //    private static Scanner scanner = new Scanner(System.in);
 //    private static MobilePhone mobilePhone = new MobilePhone("07969100968");
 //
@@ -209,33 +211,88 @@ public class Main {
 //        System.out.println("choose you action: ");
 
 
+        //-------------------3-------------------------------------
+
+//        Bank bank = new Bank("Halifax");
+//        bank.addBranch("Brixton");
+//        bank.addCustomer("Brixton", "Jade", 50.00);
+//        bank.addCustomer("Brixton", "Tim", 200.34);
+//        bank.addCustomer("Brixton", "Rob", 145.12);
+//        bank.addCustomerTransaction(" Brixton", "Jade", 32.23);
+//        bank.addCustomerTransaction("Brixton", "Tim", 204.94);
+//        bank.addCustomerTransaction("Brixton", "Jade", 90.58);
+//        bank.addCustomerTransaction("Brixton", "Tim", 1.21);
+//        bank.addCustomerTransaction("Brixton", "Rob", 390.52);
+//
+//        bank.addBranch("Camden");
+//        bank.addCustomer("Camden", "Jade", 400.23);
+//        bank.addCustomer("Camden", "Tim", 13.44);
+//        bank.addCustomer("Camden", "Rob", 109.65);
+//
+//        bank.listCustomers("Brixton", true)
 
 
+        //--------------------------4----------------------------------------
+        Player tim = new Player("tim", 10, 15);
+        System.out.println(tim.toString());
+        saveObject(tim);
+        tim.setHitPoints(9);
+        System.out.println(tim);
+        tim.setWeapon("Stormbringer");
+        saveObject(tim);
+        loadObject(tim);
+        System.out.println(tim);
+
+//        ISaveable werewolf = new Monster("Werewolf", 20, 40);
+//        System.out.println(werewolf);
+//        saveObject(werewolf);
+
+    }
+
+    public static ArrayList<String> readValues() {
+        ArrayList<String> values = new ArrayList<String>();
+
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+        int index = 0;
+        System.out.println("Choose\n" +
+                "1 to enter a string\n" +
+                "0 to quit");
+
+        while (!quit) {
+            System.out.println("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 0:
+                    quit = true;
+                    break;
+                case 1:
+                    System.out.println("Enter a string: ");
+                    String stringInput = scanner.nextLine();
+                    values.add(index, stringInput);
+                    index++;
+                    break;
+            }
+        }
+        return values;
+    }
 
 
+    public static void saveObject(ISaveable objectToSave) {
+        for (int i = 0; i < objectToSave.write().size(); i++) { //using .write() to determine the size
+            //.write() returns a list
+            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
+        }
+    }
 
-
-
-
-
-        Bank bank = new Bank("Halifax");
-        bank.addBranch("Brixton");
-        bank.addCustomer("Brixton", "Jade", 50.00);
-        bank.addCustomer("Brixton", "Tim", 200.34);
-        bank.addCustomer("Brixton", "Rob", 145.12);
-        bank.addCustomerTransaction(" Brixton", "Jade", 32.23);
-        bank.addCustomerTransaction("Brixton", "Tim", 204.94);
-        bank.addCustomerTransaction("Brixton", "Jade", 90.58);
-        bank.addCustomerTransaction("Brixton", "Tim", 1.21);
-        bank.addCustomerTransaction("Brixton", "Rob", 390.52);
-
-        bank.addBranch("Camden");
-        bank.addCustomer("Camden", "Jade", 400.23);
-        bank.addCustomer("Camden", "Tim", 13.44);
-        bank.addCustomer("Camden", "Rob", 109.65);
-
-        bank.listCustomers("Brixton", true);
+    public static void loadObject(ISaveable objectToLoad) {
+        ArrayList<String> values = readValues();
+        objectToLoad.read(values); //looking for .read(), which all objects have
+        //here we have the data which we've typed and we're going back to the player object and
+        //extract the read method and extract the necessary data out and save that in the object values for the name etc
     }
 }
+
 
 
