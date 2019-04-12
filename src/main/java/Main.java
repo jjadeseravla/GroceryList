@@ -1,3 +1,7 @@
+import Items.MyLinkedList;
+import Items.ListItem;
+import Items.Node;
+import Items.NodeList;
 import PlayerMonster.ISaveable;
 import PlayerMonster.Player;
 
@@ -237,64 +241,81 @@ public class Main {
 
 
         //--------------------------4----------------------------------------
-        Player tim = new Player("tim", 10, 15);
-        System.out.println(tim.toString());
-        saveObject(tim);
-        tim.setHitPoints(9);
-        System.out.println(tim);
-        tim.setWeapon("Stormbringer");
-        saveObject(tim);
-        loadObject(tim);
-        System.out.println(tim);
+//        Player tim = new Player("tim", 10, 15);
+//        System.out.println(tim.toString());
+//        saveObject(tim);
+//        tim.setHitPoints(9);
+//        System.out.println(tim);
+//        tim.setWeapon("Stormbringer");
+//        saveObject(tim);
+//        loadObject(tim);
+//        System.out.println(tim);
+//
+////        ISaveable werewolf = new Monster("Werewolf", 20, 40);
+////        System.out.println(werewolf);
+////        saveObject(werewolf);
+//
+//    }
+//
+//    public static ArrayList<String> readValues() {
+//        ArrayList<String> values = new ArrayList<String>();
+//
+//        Scanner scanner = new Scanner(System.in);
+//        boolean quit = false;
+//        int index = 0;
+//        System.out.println("Choose\n" +
+//                "1 to enter a string\n" +
+//                "0 to quit");
+//
+//        while (!quit) {
+//            System.out.println("Choose an option: ");
+//            int choice = scanner.nextInt();
+//            scanner.nextLine();
+//            switch (choice) {
+//                case 0:
+//                    quit = true;
+//                    break;
+//                case 1:
+//                    System.out.println("Enter a string: ");
+//                    String stringInput = scanner.nextLine();
+//                    values.add(index, stringInput);
+//                    index++;
+//                    break;
+//            }
+//        }
+//        return values;
+//    }
+//
+//
+//    public static void saveObject(ISaveable objectToSave) {
+//        for (int i = 0; i < objectToSave.write().size(); i++) { //using .write() to determine the size
+//            //.write() returns a list
+//            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
+//        }
+//    }
+//
+//    public static void loadObject(ISaveable objectToLoad) {
+//        ArrayList<String> values = readValues();
+//        objectToLoad.read(values); //looking for .read(), which all objects have
+//        //here we have the data which we've typed and we're going back to the player object and
+//        //extract the read method and extract the necessary data out and save that in the object values for the name etc
 
-//        ISaveable werewolf = new Monster("Werewolf", 20, 40);
-//        System.out.println(werewolf);
-//        saveObject(werewolf);
 
-    }
+        // -----------------------------------------------5-----------------------------------------------
 
-    public static ArrayList<String> readValues() {
-        ArrayList<String> values = new ArrayList<String>();
 
-        Scanner scanner = new Scanner(System.in);
-        boolean quit = false;
-        int index = 0;
-        System.out.println("Choose\n" +
-                "1 to enter a string\n" +
-                "0 to quit");
+        MyLinkedList list = new MyLinkedList(null);
+        list.traverse(list.getRoot());
+        //create a string data array to avoid typing loads of addItem instructions
+        //String stringData = "Darwin, Brisbane, Perth, Melbourne, Canberra, Adelaide, Sydney, Canberra";
+        String stringData = "4 7 1 9 5 6 0 2 3";
 
-        while (!quit) {
-            System.out.println("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            switch (choice) {
-                case 0:
-                    quit = true;
-                    break;
-                case 1:
-                    System.out.println("Enter a string: ");
-                    String stringInput = scanner.nextLine();
-                    values.add(index, stringInput);
-                    index++;
-                    break;
-            }
+        String[] data = stringData.split(" "); //the space is what ive chosen to separate the elements in the array
+        for (String s : data) {
+            //create new item with value set to the string s
+            list.addItem(new Node(s));
         }
-        return values;
-    }
-
-
-    public static void saveObject(ISaveable objectToSave) {
-        for (int i = 0; i < objectToSave.write().size(); i++) { //using .write() to determine the size
-            //.write() returns a list
-            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
-        }
-    }
-
-    public static void loadObject(ISaveable objectToLoad) {
-        ArrayList<String> values = readValues();
-        objectToLoad.read(values); //looking for .read(), which all objects have
-        //here we have the data which we've typed and we're going back to the player object and
-        //extract the read method and extract the necessary data out and save that in the object values for the name etc
+        list.traverse(list.getRoot());
     }
 }
 
