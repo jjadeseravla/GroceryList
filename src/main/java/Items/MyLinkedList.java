@@ -16,7 +16,7 @@ public class MyLinkedList implements NodeList {
     public boolean addItem(ListItem newItem) {
         //check for empty listitem first, and add a new item in head of the list as if it was empty.  but if list wasnt empty,
         // you need to compare each item in teh list to check where the new item would be inserted
-        if(this.root !=null)
+        if(this.root ==null)
 
     {
         //the list is empty, so this item becomes the head of the list

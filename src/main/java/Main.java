@@ -307,8 +307,8 @@ public class Main {
         MyLinkedList list = new MyLinkedList(null);
         list.traverse(list.getRoot());
         //create a string data array to avoid typing loads of addItem instructions
-        //String stringData = "Darwin, Brisbane, Perth, Melbourne, Canberra, Adelaide, Sydney, Canberra";
-        String stringData = "4 7 1 9 5 6 0 2 3";
+        String stringData = "Darwin, Brisbane, Perth, Melbourne, Canberra, Adelaide, Sydney, Canberra";
+        //String stringData = "4 7 1 9 5 6 0 2 3";
 
         String[] data = stringData.split(" "); //the space is what ive chosen to separate the elements in the array
         for (String s : data) {
