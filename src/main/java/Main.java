@@ -2,10 +2,13 @@ import Items.MyLinkedList;
 import Items.ListItem;
 import Items.Node;
 import Items.NodeList;
+import Pathway.Location;
 import PlayerMonster.ISaveable;
 import PlayerMonster.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -13,6 +16,9 @@ public class Main {
     //    private static Scanner scanner = new Scanner(System.in);
 //    private static GroceryList groceryList = new GroceryList();
 //
+
+    public static Map<Integer, Location> locations = new HashMap<String, Integer>();
+
     public static void main(String[] args) {
         //----------------------------1------------------------------
 //    boolean quit = false;
@@ -304,20 +310,67 @@ public class Main {
         // -----------------------------------------------5-----------------------------------------------
 
 
-        MyLinkedList list = new MyLinkedList(null);
-        list.traverse(list.getRoot());
-        //create a string data array to avoid typing loads of addItem instructions
-        String stringData = "Darwin, Brisbane, Perth, Melbourne, Canberra, Adelaide, Sydney, Canberra";
-        //String stringData = "4 7 1 9 5 6 0 2 3";
+//        MyLinkedList list = new MyLinkedList(null);
+//        list.traverse(list.getRoot());
+//        //create a string data array to avoid typing loads of addItem instructions
+//        //String stringData = "Darwin, Brisbane, Perth, Melbourne, Canberra, Adelaide, Sydney, Canberra";
+//        String stringData = "4 7 1 9 5 6 0 2 3";
+//
+//        String[] data = stringData.split(" "); //the space is what ive chosen to separate the elements in the array
+//        for (String s : data) {
+//            //create new item with value set to the string s
+//            list.addItem(new Node(s));
+//        }
+//        list.traverse(list.getRoot());
+//        list.removeItem("3");
+//        list.traverse(list.getRoot());
+//        list.removeItem("6");
 
-        String[] data = stringData.split(" "); //the space is what ive chosen to separate the elements in the array
-        for (String s : data) {
-            //create new item with value set to the string s
-            list.addItem(new Node(s));
+        //---------------------------------------------6-----------------------------------------------------------
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        locations.put(0, new Location(0, "on computer learning Java"));
+        locations.put(1, new Location(1, "standing at end of the road"));
+        locations.put(2, new Location(2, "at the tope of the hill"));
+        locations.put(3, new Location(3, "inside a buiilding"));
+        locations.put(4, new Location(4, "in the valley"));
+        locations.put(5, new Location(5, " in the forest"));
+
+        locations.get(1).addExit("W", 2);
+        locations.get(1).addExit("E", 3);
+        locations.get(1).addExit("S", 4);
+        locations.get(1).addExit("N", 5);
+        locations.get(1).addExit("Q", 0);
+
+        locations.get(2).addExit("N", 5);
+        locations.get(2).addExit("Q", 0);
+
+        locations.get(3).addExit("W", 1);
+        locations.get(3).addExit("Q", 0);
+
+        locations.get(4).addExit("N", 1);
+        locations.get(4).addExit("W", 2);
+        locations.get(4).addExit("Q", 0);
+
+        locations.get(5).addExit("S", 1);
+        locations.get(5).addExit("W", 2);
+        locations.get(5).addExit("Q", 0);
+
+        int loc = 1;
+        while (true) {
+            System.out.println(locations.get(loc).getDescription());
+            if (loc == 0) {
+
+
+                loc = scanner.nextInt();
+                if (!locations.containsKey(loc)) {
+                    System.out.println("you cant go there");
+                }
+            }
         }
-        list.traverse(list.getRoot());
     }
-}
 
 
 
