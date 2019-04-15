@@ -17,7 +17,7 @@ public class Main {
 //    private static GroceryList groceryList = new GroceryList();
 //
 
-    public static Map<Integer, Location> locations = new HashMap<String, Integer>();
+    public static Map<Integer, Location> locations = new HashMap<Integer, Location>();
 
     public static void main(String[] args) {
         //----------------------------1------------------------------
@@ -362,15 +362,26 @@ public class Main {
         while (true) {
             System.out.println(locations.get(loc).getDescription());
             if (loc == 0) {
+                break;
+            }
 
+            Map<String, Integer> exits = locations.get(loc).getExits();
+            System.out.println("Available exits are: ");
+            for (String exit : exits.keySet()) {
+                System.out.println(exit + ", ");
+            }
+            System.out.println();
 
-                loc = scanner.nextInt();
-                if (!locations.containsKey(loc)) {
-                    System.out.println("you cant go there");
-                }
+            String direction = scanner.nextLine().toUpperCase();
+
+            if (exits.containsKey(direction)) {
+                loc = exits.get(direction);
+            } else {
+                System.out.println("You cant go in that direction");
             }
         }
     }
+}
 
 
 
